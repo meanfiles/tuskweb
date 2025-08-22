@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TuskWeb Home</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input {
+      width: 400px;
+      height: 40px;
+      font-size: 16px;
+      padding: 0 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 12px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to TuskWeb</h1>
+  <input id="url" placeholder="Type a URL or search..." />
+  <button id="go">Go</button>
+
+  <script>
+    const input = document.getElementById("url");
+    const goBtn = document.getElementById("go");
+
+    function navigate() {
+      const url = input.value.trim();
+      if (!url) return;
+      // If no http/https, use Google search
+      const target = url.startsWith("http://") || url.startsWith("https://")
+        ? url
+        : "https://www.google.com/search?q=" + encodeURIComponent(url);
+      window.location.href = target;
+    }
+
+    goBtn.addEventListener("click", navigate);
+    input.addEventListener("keydown", e => { if (e.key === "Enter") navigate(); });
+  </script>
+</body>
+</html>

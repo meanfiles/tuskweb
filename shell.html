@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; }
+    header {
+      position: absolute; top: 0; left: 0; right: 0; height: 60px;
+      background: #eee; display: flex; align-items: center; padding: 8px;
+    }
+    input { flex: 1; height: 40px; font-size: 16px; padding: 0 10px; }
+    button { margin-left: 8px; padding: 6px 12px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <button id="back">◀</button>
+    <button id="forward">▶</button>
+    <button id="reload">⟳</button>
+    <input id="url" placeholder="Type URL or search..." />
+    <button onclick="go()">Go</button>
+  </header>
+
+  <script>
+    const input = document.getElementById("url");
+
+    function go() {
+      window.browserAPI.go(input.value);
+    }
+
+    document.getElementById("back").addEventListener("click", () => {
+      window.browserAPI.nav("back");
+    });
+    document.getElementById("forward").addEventListener("click", () => {
+      window.browserAPI.nav("forward");
+    });
+    document.getElementById("reload").addEventListener("click", () => {
+      window.browserAPI.nav("reload");
+    });
+
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter") go();
+    });
+</script>
+</body>
+</html>

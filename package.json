@@ -1,0 +1,25 @@
+{
+  "name": "tuskweb-beta3",
+  "version": "1.0.0-beta",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.tuskweb.browser",
+    "productName": "TuskWeb",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "tusk.ico"
+    }
+  }
+}
